@@ -11,8 +11,8 @@ class GameOfLifeTest(unittest.TestCase):
             [0, 0, 0]
         ])
 
-        self.assertEqual(board.cell_at(0, 1), CellState.is_alive)
-        self.assertEqual(board.cell_at(1, 1), CellState.is_dead)
+        self.assertEqual(board.cell_at(0, 1), CellState.alive)
+        self.assertEqual(board.cell_at(1, 1), CellState.dead)
 
     def test_number_of_alive_neighbours(self):
         board = Board([
@@ -33,7 +33,7 @@ class GameOfLifeTest(unittest.TestCase):
 
         board.evolve()
 
-        self.assertEqual(board.cell_at(1, 1), CellState.is_dead)
+        self.assertEqual(board.cell_at(1, 1), CellState.dead)
 
     def test_an_alive_cell_with_four_neighbours_dies(self):
         board = Board([
@@ -44,7 +44,7 @@ class GameOfLifeTest(unittest.TestCase):
 
         board.evolve()
 
-        self.assertEqual(board.cell_at(1, 1), CellState.is_dead)
+        self.assertEqual(board.cell_at(1, 1), CellState.dead)
 
     def test_an_alive_cell_with_one_neighbours_dies(self):
         board = Board([
@@ -55,7 +55,7 @@ class GameOfLifeTest(unittest.TestCase):
 
         board.evolve()
 
-        self.assertEqual(board.cell_at(1, 1), CellState.is_dead)
+        self.assertEqual(board.cell_at(1, 1), CellState.dead)
 
     def test_an_alive_cell_with_more_than_four_neighbours_dies(self):
         board = Board([
@@ -66,7 +66,7 @@ class GameOfLifeTest(unittest.TestCase):
 
         board.evolve()
 
-        self.assertEqual(board.cell_at(1, 1), CellState.is_dead)
+        self.assertEqual(board.cell_at(1, 1), CellState.dead)
 
     def test_a_dead_cell_with_three_alive_neighbours_resurrects(self):
         board = Board([
@@ -76,4 +76,4 @@ class GameOfLifeTest(unittest.TestCase):
 
         board.evolve()
 
-        self.assertEqual(board.cell_at(0, 0), CellState.is_alive)
+        self.assertEqual(board.cell_at(0, 0), CellState.alive)
